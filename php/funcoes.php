@@ -37,7 +37,7 @@ function raiz($num1){
     if ($num1 < 0){
         return sqrt($num1);
     }else{
-        return "Impossível calcular a raiz de número negativo";
+        return "Impossível calcular a raiz de um número negativo";
     }
     return sqrt($num1);
 }//Fim do método
@@ -46,7 +46,7 @@ function raiz($num1){
         $i = 0;
         $resultado = "";
         for($i;$i<=10;$i++){
-            $resultado .= "<br>".$num1." * ".$i." = ".($num1*$i);
+            $resultado .= "<\n>".$num1." * ".$i." = ".($num1*$i);
         }//Fim do 'for'
         return $resultado;
 
@@ -164,7 +164,7 @@ function raiz($num1){
             $pares = "";
             for($i; $i <= $num; $i++){
                 if($i % 2 == 0){
-                    $pares .= "<br>".$i;
+                    $pares .= "<\n>".$i;
                 }
             }//Fim do "for"
             return $pares;
@@ -243,7 +243,7 @@ function raiz($num1){
             $divisor = "";
             for($i;$i < $num; $i++){
                 if($num % $i == 0){
-                    $divisor.= "<br>".$i;
+                    $divisor.= "<\n>".$i;
                 }
                     
 
@@ -251,20 +251,7 @@ function raiz($num1){
             return $divisor;
         }//Fim do Método
 
-        function fibonaccci($num){
-            $i = 0;
-            $fib0 = 0;
-            $fib1 = 0;
-            $fib2 = 0;
-            $resultado = $fib0. "<br>".$fib1;
-            for($i;$i <= $num; $i++){
-                $fib2 = $fib0 + $fib1;
-                $resultado = "<br>" $fib2;
-                $fib0 = $fib1;
-                $fib1 = $fib2;
-            }
-            return $resultado;
-        }//Fim do Método
+       
 
         function contarPalavras($texto){
             $contar = str_word_count($texto,0);
@@ -280,9 +267,90 @@ function raiz($num1){
             }
              
         }//Fim do X2
+
+        function fibonacci ($num){
+            $i = 0;
+            $fib0 = 0;
+            $fib1 = 1;
+            $fib2 = 0;
+            $resultado = $fib0. "<br>".$fib1. "<br>";
+ 
+            for($i; $i <= $num; $i++){
+                $fib2 = $fib0 + $fib1;
+                $resultado .= $fib2;
+                $fib0 = $fib1;
+                $fib1 = $fib2;
+            }
+            return $resultado;
+        }//Fim do Método
+
+        function macas($quantidade){
+            $precoPorUnidade = $quantidade >= 12 ? 1.00 : 1.30;
+            $custoTotal = $quantidade * $precoPorUnidade;
+            return $custoTotal;
+        }//Fim do Método
+
+        function idadeEmDias($anos, $meses, $dias){
+            $diasTotais = ($anos * 365) + ($meses * 30) + $dias;
+            return $diasTotais;
+        }//Fim do Método
+
+        function calcularSalarioTotal($salarioFixo, $vendas){
+            $comissaoAte1500 = 0.03;
+            
+            $comissaoAcima1500 = 0.05;
+            
+            $comissaoTotal = 0.0;
+            
+            if ($vendas <= 1500) {
+                $comissaoTotal = $vendas * $comissaoAte1500;
+            } else {
+                $comissaoTotal = 1500 * $comissaoAte1500;
+                
+                $comissaoTotal += ($vendas - 1500) * $comissaoAcima1500;
+            }
+            
+            $salarioTotal = $salarioFixo + $comissaoTotal;
+            
+            return $salarioTotal;
+        }//Fim do Método
+
+        function calcularSaldoAtual($numeroConta, $saldo, $debito, $credito){
+            
+            $saldoAtual = $saldo - $debito + $credito;
+        
+            
+            if ($saldoAtual >= 0) {
+                $mensagem = 'Saldo Positivo';
+            } else {
+                $mensagem = 'Saldo Negativo';
+            }
+        
+            return [
+                'numeroConta' => $numeroConta,
+                'saldoAtual' => $saldoAtual,
+                'mensagem' => $mensagem
+            ];
+        }// Fim do Método
+
+        function lerValor($valor){
+                if ($valor < 1 || $valor > 10){
+                    echo "Valor inválido. Por favor, digite um valor entre 1 e 10.\n";
+                }else{
+                    return $valor;
+        }
+        
+        function escreverTabuada($valor){
+            echo "Tabuada do $valor:\n";
+            for ($i = 1; $i <= 10; $i++){
+                $resultado = $valor * $i;
+                echo "$valor x $i = $resultado\n";
+            }
+        }//Fim do Método
+
         
   
-
+/*
 //Resultados
 echo "<br><em>A soma dos números é: ".somar(5,8);
 echo "<br><em>A subtração dos números é: " .subtrair(9,15);
@@ -313,4 +381,5 @@ echo "<br>".verificarData('2','30','2024');
 echo "<br>Os números que são divisores são: ".divisores(81);
 echo "<br>Total de palavras: ".contarPalavras("Um número natural n é dito divisor de um número natural p quando a divisão de p por n for exata, isto é, se o resto for zero. Por exemplo, 8 é divisor de 16, pois 16÷8=2 com resto 0. Do mesmo modo, temos que 2 é divisor de 30, já que a divisão de 30 por 2 resulta em 15 com resto 0");
 echo "<br>Sequência de Fibonacci: ".fibonacci(10);
+*/
 ?>
